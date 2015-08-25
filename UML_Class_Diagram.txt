@@ -1,6 +1,6 @@
 @startuml
 
-class FileHash{
+class FileHash {
 }
 
 enum State {
