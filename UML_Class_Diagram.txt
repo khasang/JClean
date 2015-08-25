@@ -1,6 +1,7 @@
 @startuml
 
 class FileHash {
+    String getFastHash(File, String);
 }
 
 enum State {
