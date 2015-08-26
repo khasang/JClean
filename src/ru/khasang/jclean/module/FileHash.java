@@ -7,15 +7,19 @@ import org.apache.commons.codec.binary.Hex;
 
 public class FileHash {
 
-    public static String getFastHash(File file, String hash) throws NoSuchAlgorithmException{
+    public static String getFastHash(File file, String hash) {
         byte[] fastMD5 = null;
         byte[] fastSHA1 = null;
         String fastHash = null;
         FileInputStream fis = null;
         MessageDigest ex = null;
-        ex = MessageDigest.getInstance("MD5");
         MessageDigest sha1 = null;
-        sha1 = MessageDigest.getInstance("SHA-1");
+        try {
+            ex = MessageDigest.getInstance("MD5");
+            sha1 = MessageDigest.getInstance("SHA-1");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         byte[] buf = new byte[1024];
         int r = 0;
         try {
@@ -29,7 +33,9 @@ public class FileHash {
             e.printStackTrace();
         }
 
+        assert ex != null;
         ex.update(buf, 0, r);
+        assert sha1 != null;
         sha1.update(buf, 0, r);
 
         if(hash != null) {

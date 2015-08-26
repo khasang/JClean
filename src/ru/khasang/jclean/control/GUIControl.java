@@ -13,11 +13,13 @@ public class GUIControl extends UIControl {
         switch (windowName.toLowerCase()) {
             case "main":
                 if(mainWindow != null) {
+                    mainWindow = new MainWindow();
                     mainWindow.create();
                 }
                 break;
             case "report":
                 if(resultWindow != null) {
+                    resultWindow = new ResultWindow();
                     resultWindow.create();
                 }
                 break;
@@ -25,7 +27,7 @@ public class GUIControl extends UIControl {
     }
 
     @Override
-    public void getSearchInfoFromUser() {
+    public void getSearchInfoFromWindow() {
 
     }
 

@@ -6,4 +6,5 @@ package ru.khasang.jclean.view;
 public abstract class JCWindow {
 
     public abstract void create();
+    public abstract CommunicationsProtocol report();
 }

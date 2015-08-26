@@ -36,7 +36,7 @@ public class JContainer {
         }
     }
 
-    public void FindAllIdenticalFiles(String path) throws NoSuchAlgorithmException {
+    public void FindAllIdenticalFiles(String path) {
         getListFiles(path);
         for (File fil : listWithFileNames) {
             String crc;

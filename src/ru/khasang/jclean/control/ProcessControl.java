@@ -1,14 +1,15 @@
 package ru.khasang.jclean.control;
 
 import ru.khasang.jclean.module.JContainer;
-import java.security.NoSuchAlgorithmException;
+
 import java.util.ArrayList;
 
 public class ProcessControl {
-    private UIControl guiControl = new GUIControl();
     private boolean running;
     private static State state;
+    private UIControl guiControl = new GUIControl();
     JContainer jContainer = new JContainer();
+    
     private enum State {
         MAIN_MENU, SEARCH, REPORT
     }
@@ -33,14 +34,18 @@ public class ProcessControl {
     }
 
     private void logic() {
-        guiControl.getSearchInfoFromUser();
-        try {
-            jContainer.FindAllIdenticalFiles("path");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        switch (state) {
+            case MAIN_MENU:
+                guiControl.getSearchInfoFromWindow();
+                break;
+            case SEARCH:
+                jContainer.FindAllIdenticalFiles("");
+                break;
+            case REPORT:
+                ArrayList hexIdentical = JContainer.getHexIdentical();
+                guiControl.show(hexIdentical);
+                break;
         }
-        ArrayList hexIdentical = JContainer.getHexIdentical();
-        guiControl.show(hexIdentical);
     }
 
     private void windowsStatus() {
