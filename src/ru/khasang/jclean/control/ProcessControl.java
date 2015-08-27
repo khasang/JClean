@@ -1,6 +1,7 @@
 package ru.khasang.jclean.control;
 
 import ru.khasang.jclean.module.JContainer;
+import ru.khasang.jclean.view.CommunicationsProtocol;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class ProcessControl {
     private static State state;
     private UIControl guiControl = new GUIControl();
     JContainer jContainer = new JContainer();
-    
+
     private enum State {
         MAIN_MENU, SEARCH, REPORT
     }
@@ -36,10 +37,14 @@ public class ProcessControl {
     private void logic() {
         switch (state) {
             case MAIN_MENU:
-                guiControl.getSearchInfoFromWindow();
+                CommunicationsProtocol reportFromMain = guiControl.getReportFromWindow("MAIN");
+                if(reportFromMain != null) {
+                    jContainer.setFileFolders(reportFromMain.getFoldersList());
+                }
+                state = State.SEARCH;
                 break;
             case SEARCH:
-                jContainer.FindAllIdenticalFiles("");
+                jContainer.FindAllIdenticalFiles();
                 break;
             case REPORT:
                 ArrayList hexIdentical = JContainer.getHexIdentical();

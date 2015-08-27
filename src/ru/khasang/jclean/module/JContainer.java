@@ -11,9 +11,14 @@ public class JContainer {
     private static HashMap<Long, File> duble = new HashMap<>();
     private static HashMap<String, File> hexMap = new HashMap<>();
     private static ArrayList<File> hexIdentical = new ArrayList<>();
+    private ArrayList<String> fileFolders = new ArrayList<>();
 
     public static ArrayList<File> getHexIdentical() {
         return hexIdentical;
+    }
+
+    public void setFileFolders(ArrayList<String> fileFolders) {
+        this.fileFolders = fileFolders;
     }
 
     public static void getListFiles(String str) {
@@ -36,21 +41,22 @@ public class JContainer {
         }
     }
 
-    public void FindAllIdenticalFiles(String path) {
-        getListFiles(path);
-        for (File fil : listWithFileNames) {
-            String crc;
-            crc = FileHash.getFastHash(fil, "MD5");
-            File file = hexMap.get(crc);
-            if(file != null) {
-                if (hexIdentical.indexOf(file) == -1) {
-                    hexIdentical.add(file);
+    public void FindAllIdenticalFiles() {
+        for (String folder : fileFolders) {
+            getListFiles(folder);
+            for (File fil : listWithFileNames) {
+                String crc;
+                crc = FileHash.getFastHash(fil, "MD5");
+                File file = hexMap.get(crc);
+                if (file != null) {
+                    if (hexIdentical.indexOf(file) == -1) {
+                        hexIdentical.add(file);
+                    }
+                    hexIdentical.add(fil);
+                } else {
+                    hexMap.put(crc, fil);
                 }
-                hexIdentical.add(fil);
-            }else {
-                hexMap.put(crc, fil);
             }
-
         }
     }
 
