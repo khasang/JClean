@@ -1,16 +1,12 @@
-(http://g.gravizo.com/g?
-@startuml
-
+![Alt text](http://g.gravizo.com/g?@startuml
 title "MVC Sequence Diagram JClean"
 hide footbox
-
 @startuml
 participant Main as Main #99FF9
 participant ProcessControl as PC
 participant GUIControl as GC
 participant Interface as face
 participant Model as M
-
 Main->PC: Запуск основного контрола
 hnote over PC : Настройка
 PC->GC: Команда на отрисовку интерфейса

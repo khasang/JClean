@@ -1,8 +1,5 @@
-(http://g.gravizo.com/g?
-@startuml
-
+![Alt text](http://g.gravizo.com/g?@startuml
 title "MVC Sequence Diagram JClean"
-
 @startuml
 actor user #blue
 participant View as V #99FF9
