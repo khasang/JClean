@@ -1,4 +1,4 @@
-![Alt text](http://g.gravizo.com/g?
+(http://g.gravizo.com/g?
 @startuml
 
 title "MVC Sequence Diagram JClean"
