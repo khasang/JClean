@@ -1,7 +1,6 @@
 ![Alt text](http://g.gravizo.com/g?@startuml
 title "MVC Sequence Diagram JClean"
 hide footbox
-@startuml
 participant Main as Main #99FF9
 participant ProcessControl as PC
 participant GUIControl as GC
