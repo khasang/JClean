@@ -3,6 +3,8 @@ package ru.khasang.jclean.module;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
+
 import org.apache.commons.codec.binary.Hex;
 
 public class FileHash {
@@ -39,9 +41,9 @@ public class FileHash {
         sha1.update(buf, 0, r);
 
         if(hash != null) {
-            if(hash.toLowerCase() == "md5") {
+            if(Objects.equals(hash.toLowerCase(), "md5")) {
                 fastHash = new String(Hex.encodeHex(ex.digest()));
-            }else if(hash.toLowerCase() == "sha1") {
+            }else if(Objects.equals(hash.toLowerCase(), "sha1")) {
                 fastHash = new String(Hex.encodeHex(sha1.digest()));
             }
         }else {
