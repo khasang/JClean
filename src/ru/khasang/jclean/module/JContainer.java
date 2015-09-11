@@ -1,63 +1,77 @@
 package ru.khasang.jclean.module;
 
 import java.io.File;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class JContainer {
-    private static ArrayList<File> listWithFileNames = new ArrayList<>();
-    private static HashMap<Long, File> duble = new HashMap<>();
-    private static HashMap<String, File> hexMap = new HashMap<>();
-    private static ArrayList<File> hexIdentical = new ArrayList<>();
-    private ArrayList<String> fileFolders = new ArrayList<>();
 
-    public static ArrayList<File> getHexIdentical() {
-        return hexIdentical;
+    //список дубликатов
+    //ключ - хеш; значение - объект с данными дубликатов
+    private HashMap<String, JCFileProperty> duplicates = new HashMap<>();
+    //список файлов в просканированной дирктории
+    private ArrayList<JFile> nameList = new ArrayList<>();
+
+    //сканирует всю директорию
+    public HashMap<String, JCFileProperty> searchDuplicates(File directory) {
+        nameList.clear();
+        duplicates.clear();
+        scanFolder(directory);
+        return duplicates;
     }
 
-    public void setFileFolders(ArrayList<String> fileFolders) {
-        this.fileFolders = fileFolders;
-    }
 
-    public static void getListFiles(String str) {
-        File f = new File(str);
-        for (File s : f.listFiles()) {
-            if (s.isFile()) {
-                File file = duble.get(s.length());
-                if(file != null) {
-                    int index = listWithFileNames.indexOf(file);
-                    if (index == -1) {
-                        listWithFileNames.add(file);
-                    }
-                    listWithFileNames.add(s);
-                }else {
-                    duble.put(s.length(), s);
+    //сканирует файлы в папке на совпадения
+    private void scanFolder(File directory) {
+        File[] files = directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory() && !file.isHidden()) {
+                    scanFolder(file);
                 }
-            } else if (s.isDirectory()) {
-                getListFiles(s.getAbsolutePath());
+                if (file.isFile()) {
+                    JFile f = new JFile(file.length(), file.getAbsolutePath(), file.getName());
+                    try {
+                        checkDuplicate(f);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    nameList.add(f);
+                }
             }
         }
     }
 
-    public void FindAllIdenticalFiles() {
-        for (String folder : fileFolders) {
-            getListFiles(folder);
-            for (File fil : listWithFileNames) {
-                String crc;
-                crc = FileHash.getFastHash(fil, "MD5");
-                File file = hexMap.get(crc);
-                if (file != null) {
-                    if (hexIdentical.indexOf(file) == -1) {
-                        hexIdentical.add(file);
-                    }
-                    hexIdentical.add(fil);
+    //проверяет совпадения по размеру и добавляет в список дубликатов
+    private void checkDuplicate(JFile file) throws Exception {
+        String path1 = file.getAbsolutePath();
+        String fileHash = HashMD5.getMD5Checksum(path1);
+        long fileSize = file.getSize();
+        for (JFile name : nameList) {
+            String path2 = name.getAbsolutePath();
+
+            if (fileSize == name.getSize() && fileHash.equals(HashMD5.getMD5Checksum(path2))) {
+                if (duplicates.get(fileHash) == null) {
+                    duplicates.put(fileHash, new JCFileProperty(file.getName(), path1, path2));
                 } else {
-                    hexMap.put(crc, fil);
+                    duplicates.get(fileHash).addPathToCopiesList(path1);
                 }
+                return;
             }
         }
+    }
+
+    //преобразует размер файла в сокращенный вариант. Например 123456байт в 123,45КБ
+    private String convertFileSize(long size) {
+        if (size > 1000000000) {
+            return size / 1000000000 + "," + (size - (size / 1000000000) * 1000000000) / 10000000 + "GB";
+        } else if (size > 1000000) {
+            return size / 1000000 + "," + (size - (size / 1000000) * 1000000) / 10000 + "MB";
+        } else if (size > 1000) {
+            return size / 1000 + "," + (size - (size / 1000) * 1000) / 10 + "KB";
+        }
+        return size + "B";
     }
 
 }
