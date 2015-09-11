@@ -10,7 +10,7 @@ public class JCFileProperty {
     private String name;
 
     //адреса всех файлов с одинаковыми размерами
-    public ArrayList<String> copies = new ArrayList<>();
+    private ArrayList<String> copies = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -20,5 +20,9 @@ public class JCFileProperty {
         this.name = name;
         this.copies.add(absolutePath);
         this.copies.add(absolutePath2);
+    }
+
+    public void addPathToCopiesList(String absolutePath) {
+        copies.add(absolutePath);
     }
 }
