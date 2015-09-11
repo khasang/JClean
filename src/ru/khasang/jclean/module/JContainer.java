@@ -52,7 +52,7 @@ public class JContainer {
             String path2 = name.getAbsolutePath();
 
             if (fileSize == name.getSize()) {
-                fileHash = HashMD5.getMD5Checksum(path1);
+                if(fileHash == null) fileHash = HashMD5.getMD5Checksum(path1);
 
                 if (fileHash.equals(HashMD5.getMD5Checksum(path2))) {
                     if (duplicates.get(fileHash) == null) {
