@@ -46,18 +46,22 @@ public class JContainer {
     //проверяет совпадения по размеру и добавляет в список дубликатов
     private void checkDuplicate(JFile file) throws Exception {
         String path1 = file.getAbsolutePath();
-        String fileHash = HashMD5.getMD5Checksum(path1);
         long fileSize = file.getSize();
+        String fileHash = null;
         for (JFile name : nameList) {
             String path2 = name.getAbsolutePath();
 
-            if (fileSize == name.getSize() && fileHash.equals(HashMD5.getMD5Checksum(path2))) {
-                if (duplicates.get(fileHash) == null) {
-                    duplicates.put(fileHash, new JCFileProperty(file.getName(), path1, path2));
-                } else {
-                    duplicates.get(fileHash).addPathToCopiesList(path1);
+            if (fileSize == name.getSize()) {
+                fileHash = HashMD5.getMD5Checksum(path1);
+
+                if (fileHash.equals(HashMD5.getMD5Checksum(path2))) {
+                    if (duplicates.get(fileHash) == null) {
+                        duplicates.put(fileHash, new JCFileProperty(file.getName(), path1, path2));
+                    } else {
+                        duplicates.get(fileHash).addPathToCopiesList(path1);
+                    }
+                    return;
                 }
-                return;
             }
         }
     }
