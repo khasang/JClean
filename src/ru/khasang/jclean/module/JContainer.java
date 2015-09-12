@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class JContainer {
 
     public static ArrayList<File> getHexIdentical() {
-
+        return null;
     }
 
     public void setFileFolders(ArrayList<String> fileFolders) {
