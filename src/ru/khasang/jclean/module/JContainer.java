@@ -10,11 +10,11 @@ public class JContainer {
         return null;
     }
 
-    public void setFileFolders(ArrayList<String> fileFolders) {
+    public void setFileFolders() {
 
     }
 
-    public static void getListFiles(String str) {
+    public static void getListFiles() {
 
     }
 
