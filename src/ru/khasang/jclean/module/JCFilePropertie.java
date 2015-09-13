@@ -10,6 +10,7 @@ public class JCFilePropertie {
     private long size;
     private String path;
     private String fileType;
+    private String fileName;
 
     public boolean isMarked() {
         return isMarked;
@@ -41,5 +42,13 @@ public class JCFilePropertie {
 
     public void setFileType(String fileType) {
         this.fileType = fileType;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
