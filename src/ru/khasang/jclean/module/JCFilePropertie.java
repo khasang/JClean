@@ -9,7 +9,7 @@ public class JCFilePropertie {
     private boolean isMarked = false;
     private long size;
     private String path;
-    private String typeExtend;
+    private String fileType;
 
     public boolean isMarked() {
         return isMarked;
@@ -35,11 +35,11 @@ public class JCFilePropertie {
         this.path = path;
     }
 
-    public String getTypeExtend() {
-        return typeExtend;
+    public String getFileType() {
+        return fileType;
     }
 
-    public void setTypeExtend(String typeExtend) {
-        this.typeExtend = typeExtend;
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 }
