@@ -1,8 +1,8 @@
 package ru.khasang.jclean.module;
 
 /**
- класс в котором будет отражаться инфа о том, помечен файл на удаление или нет,
- где находится, какое расширение имеет, какой у него размер.
+ РєР»Р°СЃСЃ РІ РєРѕС‚РѕСЂРѕРј Р±СѓРґРµС‚ РѕС‚СЂР°Р¶Р°С‚СЊСЃСЏ РёРЅС„Р° Рѕ С‚РѕРј, РїРѕРјРµС‡РµРЅ С„Р°Р№Р» РЅР° СѓРґР°Р»РµРЅРёРµ РёР»Рё РЅРµС‚,
+ РіРґРµ РЅР°С…РѕРґРёС‚СЃСЏ, РєР°РєРѕРµ СЂР°СЃС€РёСЂРµРЅРёРµ РёРјРµРµС‚, РєР°РєРѕР№ Сѓ РЅРµРіРѕ СЂР°Р·РјРµСЂ.
  */
 public class JCFilePropertie {
 
@@ -10,6 +10,7 @@ public class JCFilePropertie {
     private long size;
     private String path;
     private String fileType;
+    private String fileName;
 
     public boolean isMarked() {
         return isMarked;
@@ -41,5 +42,13 @@ public class JCFilePropertie {
 
     public void setFileType(String fileType) {
         this.fileType = fileType;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
