@@ -7,11 +7,11 @@ import java.util.HashMap;
 
 public class JContainer {
 
-    private HashMap<String, ArrayList<JCFilePropertie>> hexIdentical = new HashMap<>();
-    private ArrayList<JCFilePropertie> filesOfDirectory = new ArrayList<>();
+    private HashMap<String, ArrayList<JCFileProperty>> hexIdentical = new HashMap<>();
+    private ArrayList<JCFileProperty> filesOfDirectory = new ArrayList<>();
     private ArrayList<String> fileFolders;
 
-    public HashMap<String, ArrayList<JCFilePropertie>> getHexIdentical() {
+    public HashMap<String, ArrayList<JCFileProperty>> getHexIdentical() {
         return hexIdentical;
     }
 
@@ -23,7 +23,7 @@ public class JContainer {
         this.fileFolders = fileFolders;
     }
 
-    public void FindAllIdenticalFiles() {
+    public void findAllIdenticalFiles() {
         for (String folderPath : fileFolders) {
             File folder = new File(folderPath);
             findIdenticalFilesInFolder(folder);
@@ -38,11 +38,7 @@ public class JContainer {
                     findIdenticalFilesInFolder(file);
                 }
                 if (file.isFile()) {
-                    JCFilePropertie currentFile = new JCFilePropertie();
-                    currentFile.setFileName(file.getName());
-                    currentFile.setPath(file.getAbsolutePath());
-                    currentFile.setSize(file.length());
-
+                    JCFileProperty currentFile = new JCFileProperty(file);
                     findDuplicatesInFiles(currentFile);
                     filesOfDirectory.add(currentFile);
                 }
@@ -50,9 +46,9 @@ public class JContainer {
         }
     }
 
-    private void findDuplicatesInFiles(JCFilePropertie currentFile) {
+    private void findDuplicatesInFiles(JCFileProperty currentFile) {
         String currentFileHash = null;
-        for (JCFilePropertie file : filesOfDirectory) {
+        for (JCFileProperty file : filesOfDirectory) {
             if (currentFile.getSize() == file.getSize()) {
                 String fileHash = FileHash.getFastHash(file.getPath());
                 if (currentFileHash == null) {
@@ -66,9 +62,9 @@ public class JContainer {
         }
     }
 
-    private void addFileToDuplicates(JCFilePropertie currentFile, String currentFileHash, JCFilePropertie fileFromList) {
+    private void addFileToDuplicates(JCFileProperty currentFile, String currentFileHash, JCFileProperty fileFromList) {
         if (hexIdentical.get(currentFileHash) == null) {
-            ArrayList<JCFilePropertie> arrayWithCopies = new ArrayList<>();
+            ArrayList<JCFileProperty> arrayWithCopies = new ArrayList<>();
             arrayWithCopies.add(currentFile);
             arrayWithCopies.add(fileFromList);
             hexIdentical.put(currentFileHash, arrayWithCopies);
