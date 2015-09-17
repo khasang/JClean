@@ -41,15 +41,12 @@ public class FileHash {
     }
 
 
-    public static String getHashFaster(String path) {
+    public static String getFastHash(String path) {
         StringBuffer hexString = null;
         try (FileInputStream fin = new FileInputStream(path)) // создаем поток чтения байтов из файла
         {
             int size = fin.available(); // получаем количество доступных для чтения байтов в файле
-            if (size <= 2048) { // если размер файла не более 2048, то читаем весь файл целиком
-                return getHash(path);
-            }
-            byte[] buff = new byte[2048]; // создаем вспомогательный массив байтов, куда будем записывать байты из фала для последующей передащи функции хеширования
+            byte[] buff = new byte[2048]; // создаем вспомогательный массив байтов, куда будем записывать байты из файла для последующей передащи функции хэширования
             if (fin.read(buff, 0, 1024) != 1024) {// читаем первые 1024 байта в первую половину вспомогательного массива
                 System.err.println("Нельзя прочитать первые " + 1024 + " байтов");
                 return null;
