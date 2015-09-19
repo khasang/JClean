@@ -10,6 +10,7 @@ public class JContainer {
     private HashMap<String, ArrayList<JCFileProperty>> hexIdentical = new HashMap<>();
     private ArrayList<JCFileProperty> filesOfDirectory = new ArrayList<>();
     private ArrayList<String> fileFolders;
+    private static final int PERCENT = 1;
 
     public HashMap<String, ArrayList<JCFileProperty>> getHexIdentical() {
         return hexIdentical;
@@ -50,9 +51,9 @@ public class JContainer {
         String currentFileHash = null;
         for (JCFileProperty file : filesOfDirectory) {
             if (currentFile.getSize() == file.getSize()) {
-                String fileHash = FileHash.getFastHash(file.getPath());
+                String fileHash = getHash(currentFile.getPath(), currentFile.getSize());
                 if (currentFileHash == null) {
-                    currentFileHash = FileHash.getFastHash(currentFile.getPath());
+                    currentFileHash = getHash(currentFile.getPath(), currentFile.getSize());
                 }
                 if (currentFileHash.equals(fileHash)) {
                     addFileToDuplicates(currentFile, currentFileHash, file);
@@ -72,4 +73,10 @@ public class JContainer {
             hexIdentical.get(currentFileHash).add(currentFile);
         }
     }
+
+    public static String getHash(String path, long size) {
+        int bufferReadPiece = (int) size * PERCENT / 100;
+        return FileHash.getFastHash(path, size, bufferReadPiece);
+    }
+
 }
