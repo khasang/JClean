@@ -75,7 +75,8 @@ public class JContainer {
     }
 
     public static String getHash(String path, long size) {
-        int bufferReadPiece = (int) size * PERCENT / 100;
+        size = size * PERCENT / 100;
+        int bufferReadPiece = (int) size;
         return FileHash.getFastHash(path, size, bufferReadPiece);
     }
 
