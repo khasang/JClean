@@ -51,7 +51,7 @@ public class JContainer {
         String currentFileHash = null;
         for (JCFileProperty file : filesOfDirectory) {
             if (currentFile.getSize() == file.getSize()) {
-                String fileHash = getHash(currentFile.getPath(), currentFile.getSize());
+                String fileHash = getHash(file.getPath(), file.getSize());
                 if (currentFileHash == null) {
                     currentFileHash = getHash(currentFile.getPath(), currentFile.getSize());
                 }
