@@ -6,6 +6,19 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class FileHash {
+    private static int PERCENT = 1;
+
+    public static void setPERCENT(int PERCENT) {
+        FileHash.PERCENT = PERCENT;
+    }
+    public static int getPERCENT() {
+        return PERCENT;
+    }
+    public static String getHash(String path, long size) {
+        size = size * PERCENT / 100;
+        int bufferReadPiece = (int) size;
+        return FileHash.getFastHash(path, size, bufferReadPiece);
+    }
 
     public static String getFastHash(String path, long fileSize, int bufferReadPiece) {
         StringBuffer hexString = null;
@@ -14,9 +27,7 @@ public class FileHash {
             int bufferSize = bufferReadPiece * 2;
             byte[] buff = new byte[bufferSize]; // создаем вспомогательный массив байтов, куда будем записывать байты из файла для последующей передащи функции хэширования
             fin.read(buff, 0, bufferReadPiece); // читаем байты с начала файла в первую половину вспомогательного массива
-
             fin.skip(fileSize - bufferSize); // пропустить все байты перед последним куском
-
             fin.read(buff, bufferReadPiece, bufferReadPiece); // читаем байты в конце файла во вторую половину вспомогательного массива
             MessageDigest md5 = MessageDigest.getInstance("MD5");// создаем объект, инкапсулирующий алгоритм MD5
             md5.reset();
