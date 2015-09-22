@@ -7,17 +7,14 @@ import java.security.NoSuchAlgorithmException;
 
 public class FileHash {
     private static int PERCENT = 1;
-
     public static void setPERCENT(int PERCENT) {
         FileHash.PERCENT = PERCENT;
     }
-    public static int getPERCENT() {
-        return PERCENT;
-    }
+    public static int getPERCENT() { return PERCENT; }
     public static String getHash(String path, long size) {
-        size = size * PERCENT / 100;
-        int bufferReadPiece = (int) size;
-        return FileHash.getFastHash(path, size, bufferReadPiece);
+        long currentBufferReadPiece = size * PERCENT / 100;
+        int bufferReadPiece = (int) currentBufferReadPiece;
+        return getFastHash(path, size, bufferReadPiece);
     }
 
     public static String getFastHash(String path, long fileSize, int bufferReadPiece) {
