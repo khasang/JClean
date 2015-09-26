@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class JContainer {
 
     private HashMap<String, ArrayList<FileProperty>> hexIdentical = new HashMap<>();
@@ -36,8 +35,7 @@ public class JContainer {
             for (File file : files) {
                 if (file.isDirectory()) {
                     findIdenticalFilesInFolder(file);
-                }
-                if (file.isFile()) {
+                } else if (file.isFile()) {
                     FileProperty currentFile = new FileProperty(file);
                     findDuplicatesInFiles(currentFile);
                     filesOfDirectory.add(currentFile);
@@ -53,8 +51,7 @@ public class JContainer {
                 String fileHash = FileHash.getHash(file.getPath(), file.getSize());
                 if (currentFileHash == null) {
                     currentFileHash = FileHash.getHash(currentFile.getPath(), currentFile.getSize());
-                }
-                if (currentFileHash.equals(fileHash)) {
+                } else if (currentFileHash.equals(fileHash)) {
                     addFileToDuplicates(currentFile, currentFileHash, file);
                     return;
                 }
