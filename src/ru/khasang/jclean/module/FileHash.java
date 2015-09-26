@@ -6,11 +6,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class FileHash {
-    private static int PERCENT = 1;
-    public static void setPERCENT(int PERCENT) {
-        FileHash.PERCENT = PERCENT;
-    }
+    private final static int PERCENT = 1;
+    
     public static int getPERCENT() { return PERCENT; }
+
     public static String getHash(String path, long size) {
         long currentBufferReadPiece = size * PERCENT / 100;
         int bufferReadPiece = (int) currentBufferReadPiece;
