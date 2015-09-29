@@ -9,6 +9,7 @@ public class JContainer {
     private HashMap<String, ArrayList<FileProperty>> hexIdentical = new HashMap<>();
     private ArrayList<FileProperty> filesOfDirectory = new ArrayList<>();
     private ArrayList<String> fileFolders;
+    private FileTypeQualifier fileTypeQualifier = FileTypeQualifier.getInstance();
 
     public HashMap<String, ArrayList<FileProperty>> getHexIdentical() {
         return hexIdentical;
@@ -28,6 +29,15 @@ public class JContainer {
         for (String folderPath : fileFolders) {
             File folder = new File(folderPath);
             findIdenticalFilesInFolder(folder);
+        }
+    }
+
+    //устанавливает типы для всех файлов в списке дубликатов
+    private void setTypesToHexIdenticals() {
+        for (ArrayList<FileProperty> fileProperties : hexIdentical.values()) {
+            for (FileProperty fileProperty : fileProperties) {
+                fileProperty.setFileType(fileTypeQualifier.getFileType(fileProperty.getFileName()));
+            }
         }
     }
 
