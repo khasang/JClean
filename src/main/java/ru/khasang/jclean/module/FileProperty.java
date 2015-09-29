@@ -55,11 +55,4 @@ public class FileProperty {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
-
-    public String getFileExtension(String fullPath) {
-        int sepPos = fullPath.lastIndexOf(File.separator);
-        String nameAndExt = fullPath.substring(sepPos + 1, fullPath.length());
-        int dotPos = nameAndExt.lastIndexOf(".");
-        return dotPos != -1 ? nameAndExt.substring(dotPos + 1) : "";
-    }
 }
