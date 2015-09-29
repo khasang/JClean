@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class FileHash {
+
     
     private final static int PERCENT = 1;
 
