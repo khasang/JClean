@@ -30,6 +30,7 @@ public class JContainer {
             File folder = new File(folderPath);
             findIdenticalFilesInFolder(folder);
         }
+        setTypesToHexIdenticals();
     }
 
     //устанавливает типы для всех файлов в списке дубликатов
