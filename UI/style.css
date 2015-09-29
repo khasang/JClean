@@ -1,6 +1,4 @@
-.background {
-    -fx-background-color: #ffffff;
-}
+
 .backgroundTopMenu {
     -fx-background-color: #2F3597;
 }
@@ -11,4 +9,8 @@
 .topPaneColor {
     -fx-background-color: #424EB4;
     -fx-effect: dropshadow( one-pass-box , black , 10 , 0.0 , 1 , 1 );
+}
+.setTopMenuCloseButtom {
+    -fx-background-color: blue;
+    
 }
