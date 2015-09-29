@@ -13,7 +13,6 @@ public class FileProperty {
         setFileName(file.getName());
         setPath(file.getAbsolutePath());
         setSize(file.length());
-        setFileType(getFileExtension(getPath()));
     }
 
     public boolean isMarked() {
