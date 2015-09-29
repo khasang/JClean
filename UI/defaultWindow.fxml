@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+
+<AnchorPane fx:id="topMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="24.0" prefHeight="46.0" prefWidth="800.0" styleClass="topPaneColor" stylesheets="@style.css" />
+      <Pane prefHeight="24.0" prefWidth="800.0" styleClass="backgroundTopMenu">
+         <children>
+            <Button fx:id="topMenuCloseButtom" layoutX="761.0" layoutY="-2.0" mnemonicParsing="false" onAction="#setTopMenuCloseButtom" prefHeight="25.0" prefWidth="26.0" text="Button" />
+            <Button layoutX="728.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" text="Button" />
+            <Button layoutX="694.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" text="Button" />
+         </children>
+      </Pane>
+      <Label layoutX="303.0" layoutY="519.0" styleClass="font" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" />
+   </children>
+</AnchorPane>

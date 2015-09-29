@@ -1,0 +1,14 @@
+.background {
+    -fx-background-color: #ffffff;
+}
+.backgroundTopMenu {
+    -fx-background-color: #2F3597;
+}
+.font {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-color: #68B6CE;
+}
+.topPaneColor {
+    -fx-background-color: #424EB4;
+    -fx-effect: dropshadow( one-pass-box , black , 10 , 0.0 , 1 , 1 );
+}
