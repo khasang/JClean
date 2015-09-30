@@ -46,9 +46,8 @@ public class FileTypeQualifier {
         return instance;
     }
 
-    //возвращает тип файла исходя из имени
-    public String getFileType(String fileName) {
-        String fileExtension = getFileExtension(fileName);
+    //возвращает тип файла исходя из расширения
+    public String getFileType(String fileExtension) {
         for (Map.Entry<String, String[]> type : typeList.entrySet()) {
             if (compareWithExtensionList(type.getValue(), fileExtension)) {
                 return type.getKey();
@@ -66,11 +65,4 @@ public class FileTypeQualifier {
         }
         return false;
     }
-
-    //выдирает расширение из имени
-    private String getFileExtension(String fileName) {
-        int dotPos = fileName.lastIndexOf(".");
-        return dotPos != -1 ? fileName.substring(dotPos + 1) : "";
-    }
-
 }
