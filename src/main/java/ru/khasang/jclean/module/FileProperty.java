@@ -8,11 +8,20 @@ public class FileProperty {
     private String path;
     private String fileType;
     private String fileName;
+    private String fileExtension;
 
     public FileProperty(File file) {
         setFileName(file.getName());
         setPath(file.getAbsolutePath());
         setSize(file.length());
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
     }
 
     public boolean isMarked() {
