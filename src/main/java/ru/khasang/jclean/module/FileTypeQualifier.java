@@ -8,8 +8,6 @@ import java.util.Map;
  */
 public class FileTypeQualifier {
 
-    private static FileTypeQualifier instance;
-
     private static final String[] AUDIO = {
             "aa", "aac", "amr", "ape", "asf", "cda", "flac", "lav", "mp3", "mt9", "ogg", "voc", "wav", "wma"
     };
@@ -29,25 +27,15 @@ public class FileTypeQualifier {
             "mpeg", "mpg", "mts", "rm", "spl", "srt", "stl", "swf", "vcd", "vid", "vob",
             "wm", "wmv", "yuv"
     };
-    private HashMap<String, String[]> typeList = new HashMap<String, String[]>() {{
+    private static HashMap<String, String[]> typeList = new HashMap<String, String[]>() {{
         put("audio", AUDIO);
         put("graphic", GRAPHIC);
         put("video", VIDEO);
         put("text", TEXT);
     }};
 
-    private FileTypeQualifier() {
-    }
-
-    public static FileTypeQualifier getInstance() {
-        if (instance == null) {
-            instance = new FileTypeQualifier();
-        }
-        return instance;
-    }
-
     //возвращает тип файла исходя из расширения
-    public String getFileType(String fileExtension) {
+    public static String getFileType(String fileExtension) {
         for (Map.Entry<String, String[]> type : typeList.entrySet()) {
             if (compareWithExtensionList(type.getValue(), fileExtension)) {
                 return type.getKey();
@@ -57,7 +45,7 @@ public class FileTypeQualifier {
     }
 
     //сравнивает расширение файла со списком расширений одного типа на момент совпадений
-    private boolean compareWithExtensionList(String[] extensionList, String fileExtension) {
+    private static boolean compareWithExtensionList(String[] extensionList, String fileExtension) {
         for (String extension : extensionList) {
             if (fileExtension.compareToIgnoreCase(extension) == 0) {
                 return true;
