@@ -1,4 +1,5 @@
 package ru.khasang.jclean.module;
+
 import java.io.File;
 
 public class FileProperty {
@@ -20,8 +21,10 @@ public class FileProperty {
         return fileExtension;
     }
 
-    public void setFileExtension(String fileExtension) {
-        this.fileExtension = fileExtension;
+    //достает расширение из имени
+    public void setFileExtensionFromName() {
+        int dotPos = fileName.lastIndexOf(".");
+        this.fileExtension = dotPos != -1 ? fileName.substring(dotPos + 1) : "";
     }
 
     public boolean isMarked() {
