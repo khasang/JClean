@@ -9,7 +9,6 @@ public class JContainer {
     private HashMap<String, ArrayList<FileProperty>> hexIdentical = new HashMap<>();
     private ArrayList<FileProperty> filesOfDirectory = new ArrayList<>();
     private ArrayList<String> fileFolders;
-    private FileTypeQualifier fileTypeQualifier = FileTypeQualifier.getInstance();
 
     public HashMap<String, ArrayList<FileProperty>> getHexIdentical() {
         return hexIdentical;
@@ -64,11 +63,9 @@ public class JContainer {
     }
 
     private void addFileToDuplicates(FileProperty currentFile, String currentFileHash, FileProperty fileFromList) {
-        currentFile.setFileExtensionFromName();
-        currentFile.setFileType(fileTypeQualifier.getFileType(currentFile.getFileExtension()));
+        currentFile.setFileExtensionAndType();
         if (hexIdentical.get(currentFileHash) == null) {
-            fileFromList.setFileExtensionFromName();
-            fileFromList.setFileType(fileTypeQualifier.getFileType(fileFromList.getFileExtension()));
+            fileFromList.setFileExtensionAndType();
             ArrayList<FileProperty> arrayWithCopies = new ArrayList<>();
             arrayWithCopies.add(currentFile);
             arrayWithCopies.add(fileFromList);
