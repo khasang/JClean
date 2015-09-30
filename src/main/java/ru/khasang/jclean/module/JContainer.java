@@ -30,16 +30,6 @@ public class JContainer {
             File folder = new File(folderPath);
             findIdenticalFilesInFolder(folder);
         }
-        setTypesToHexIdenticals();
-    }
-
-    //устанавливает типы для всех файлов в списке дубликатов
-    private void setTypesToHexIdenticals() {
-        for (ArrayList<FileProperty> fileProperties : hexIdentical.values()) {
-            for (FileProperty fileProperty : fileProperties) {
-                fileProperty.setFileType(fileTypeQualifier.getFileType(fileProperty.getFileName()));
-            }
-        }
     }
 
     private void findIdenticalFilesInFolder(File folder) {
@@ -74,7 +64,11 @@ public class JContainer {
     }
 
     private void addFileToDuplicates(FileProperty currentFile, String currentFileHash, FileProperty fileFromList) {
+        currentFile.setFileExtensionFromName();
+        currentFile.setFileType(fileTypeQualifier.getFileType(currentFile.getFileExtension()));
         if (hexIdentical.get(currentFileHash) == null) {
+            fileFromList.setFileExtensionFromName();
+            fileFromList.setFileType(fileTypeQualifier.getFileType(fileFromList.getFileExtension()));
             ArrayList<FileProperty> arrayWithCopies = new ArrayList<>();
             arrayWithCopies.add(currentFile);
             arrayWithCopies.add(fileFromList);
