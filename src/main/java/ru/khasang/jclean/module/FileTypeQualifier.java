@@ -34,7 +34,6 @@ public class FileTypeQualifier {
         put("text", TEXT);
     }};
 
-    //возвращает тип файла исходя из расширения
     public static String getFileType(String fileExtension) {
         for (Map.Entry<String, String[]> type : typeList.entrySet()) {
             if (compareWithExtensionList(type.getValue(), fileExtension)) {
@@ -44,7 +43,6 @@ public class FileTypeQualifier {
         return "other";
     }
 
-    //сравнивает расширение файла со списком расширений одного типа на момент совпадений
     private static boolean compareWithExtensionList(String[] extensionList, String fileExtension) {
         for (String extension : extensionList) {
             if (fileExtension.compareToIgnoreCase(extension) == 0) {

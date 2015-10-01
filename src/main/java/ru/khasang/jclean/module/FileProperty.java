@@ -21,13 +21,9 @@ public class FileProperty {
         return fileExtension;
     }
 
-    //достает расширение из имени
     public void setFileExtensionAndType() {
-        //set extension
         int dotPos = fileName.lastIndexOf(".");
         this.fileExtension = dotPos != -1 ? fileName.substring(dotPos + 1) : "";
-
-        //set type
         fileType = FileTypeQualifier.getFileType(fileExtension);
     }
 
