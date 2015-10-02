@@ -75,7 +75,7 @@ public class JContainer {
         }
     }
 
-    public void markDublicateFiles(String hashStr, int index) {
+    public void markAsDeleted(String hashStr, int index) {
         hexIdentical.get(hashStr).get(index).setIsMarked(true);
     }
 
