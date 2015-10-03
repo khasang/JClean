@@ -1,16 +1,35 @@
 
-.backgroundTopMenu {
-    -fx-background-color: #2F3597;
-}
 .font {
     -fx-font-family: "Segoe UI Semibold";
     -fx-font-color: #68B6CE;
 }
+.backgroundTopMenu {
+    -fx-background-color: #2F3597;
+}
 .topPaneColor {
     -fx-background-color: #424EB4;
-    -fx-effect: dropshadow( one-pass-box , black , 10 , 0.0 , 1 , 1 );
 }
-.setTopMenuCloseButtom {
-    -fx-background-color: blue;
-    
+.topMenuButtom {
+    -fx-background-color: #2F3597; 
+}
+.addButton {
+    -fx-background-image: no-repeat;
+    -fx-background-color: #FD3E80;
+    -fx-background-radius: 75, 75;
+    -fx-background-insets: -1.7, 0;
+}
+.addBbuttonInner {
+    -fx-background-image: no-repeat;
+    -fx-background-radius: 75, 75;
+    -fx-background-insets: -1.7, 0;
+    -fx-padding: 0;
+    -fx-font-size: 0;
+}
+.CloseWindow {
+    -fx-graphic: url("images/close.png");
+/*    -fx-background-image: url("images/close.png");*/
+    -fx-size: 35;
+}
+.test {
+    -fx-graphic: url("images/paper-fab%20add.png");
 }
