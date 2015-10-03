@@ -79,6 +79,7 @@ public class JContainer {
 
     private void addFileToDuplicates(FileProperty currentFile, String currentFileHash, FileProperty fileFromList) {
         currentFile.setFileExtensionAndType();
+        currentFile.setFileHashCode(currentFileHash);
         fileFromList.setFileHashCode(currentFileHash);
         if (hexIdentical.get(currentFileHash) == null) {
             fileFromList.setFileExtensionAndType();
