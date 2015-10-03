@@ -65,13 +65,10 @@ public class JContainer {
     }
 
     private void findDuplicatesInFiles(FileProperty currentFile) {
-        String currentFileHash = null;
         for (FileProperty file : filesOfDirectory) {
             if (currentFile.getSize() == file.getSize()) {
                 String fileHash = FileHash.getHash(file.getPath(), file.getSize());
-                if (currentFileHash == null) {
-                    currentFileHash = FileHash.getHash(currentFile.getPath(), currentFile.getSize());
-                }
+                String currentFileHash = FileHash.getHash(currentFile.getPath(), currentFile.getSize());
                 if (currentFileHash.equals(fileHash)) {
                     addFileToDuplicates(currentFile, currentFileHash, file);
                     return;
@@ -82,6 +79,7 @@ public class JContainer {
 
     private void addFileToDuplicates(FileProperty currentFile, String currentFileHash, FileProperty fileFromList) {
         currentFile.setFileExtensionAndType();
+        fileFromList.setFileHashCode(currentFileHash);
         if (hexIdentical.get(currentFileHash) == null) {
             fileFromList.setFileExtensionAndType();
             ArrayList<FileProperty> arrayWithCopies = new ArrayList<>();
@@ -102,7 +100,6 @@ public class JContainer {
     }
 
     private void setFilesToDeleteMap(String currentFileHash, FileProperty currentFile) {
-        filesToDeleteMap.clear();
         if (filesToDeleteMap.get(currentFileHash) == null) {
             filesToDeleteList.add(currentFile);
             filesToDeleteMap.put(currentFileHash, filesToDeleteList);
@@ -124,6 +121,7 @@ public class JContainer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        filesToDeleteMap.clear();
     }
 
     private void createTempFile(String currentFileHash, FileProperty currentFile) {
