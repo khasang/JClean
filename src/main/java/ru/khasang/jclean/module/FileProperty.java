@@ -10,6 +10,7 @@ public class FileProperty {
     private String fileType;
     private String fileName;
     private String fileExtension;
+    private String hashCode;
 
     public FileProperty(File file) {
         setFileName(file.getName());
@@ -66,4 +67,11 @@ public class FileProperty {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+    public String getFileHashCode() { return hashCode; }
+
+    public void setFileHashCode(String hashCode) { this.hashCode = hashCode; }
+
+    public String toString () { return getFileName(); }
+
 }
