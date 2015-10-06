@@ -79,4 +79,22 @@ public class JContainer {
         hexIdentical.get(hashStr).get(index).setIsMarked(true);
     }
 
+    public boolean deleteFiles(ArrayList<String> hashWithNumbers, String splitter) {
+        boolean b = true;
+        for (String s : hashWithNumbers) {
+            String[] splitted = s.split("[" + splitter + "]");
+            String hash = splitted[0];
+            for (int i = splitted.length - 1; i >= 1; i--) {
+                int number = Integer.parseInt(splitted[i]);
+                File file = new File(hexIdentical.get(hash).get(number).getPath());
+                if (!file.delete()) {
+                    b = false;
+                    continue;
+                }
+                hexIdentical.get(hash).remove(number);
+            }
+        }
+        return b;
+    }
+    
 }
