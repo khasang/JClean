@@ -2,6 +2,7 @@ package ru.khasang.jclean.module;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class JContainer {
@@ -79,22 +80,35 @@ public class JContainer {
         hexIdentical.get(hashStr).get(index).setIsMarked(true);
     }
 
-    public boolean deleteFiles(ArrayList<String> hashWithNumbers, String splitter) {
-        boolean b = true;
+    public void deleteFiles(ArrayList<String> hashWithNumbers, String splitter) {
         for (String s : hashWithNumbers) {
-            String[] splitted = s.split("[" + splitter + "]");
-            String hash = splitted[0];
-            for (int i = splitted.length - 1; i >= 1; i--) {
+            String[] splitted = s.split("[" + splitter + "]"); //разбиваем строку и создаем массив из получившихся элементов
+            String hash = splitted[0]; //в первом элементе хранится хэш
+            for (int i = 1; i < splitted.length; i++) { //пробегаем массив, начиная со второго элемента
                 int number = Integer.parseInt(splitted[i]);
                 File file = new File(hexIdentical.get(hash).get(number).getPath());
-                if (!file.delete()) {
-                    b = false;
-                    continue;
+                if (file.delete()) {
+                    hexIdentical.get(hash).get(number).setFileDeleteError(false); //если файл удалился, помечаем флаг как false
+                } else {
+                    hexIdentical.get(hash).get(number).setFileDeleteError(true); //если файл невозможно удалить, помечаем флаг как true
                 }
+            }
+            deleteFilesFromMap(hash, splitted);
+        }
+    }
+
+    public void deleteFilesFromMap(String hash, String[] splitted) {
+        int[] numbers = new int[splitted.length - 1]; //создаем пустой массив для индексов файлов
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Integer.parseInt(splitted[i + 1]); //заполняем массив индексами файлов
+        }
+        Arrays.parallelSort(numbers); //быстрая сортировка элементов массива по возрастанию
+        for (int i = numbers.length - 1; i >= 0; i--) { //пробегаем массив с конца
+            int number = numbers[i];
+            if (!hexIdentical.get(hash).get(number).isFileDeleteError()) { // если файл был удален с диска, удалить его из карты
                 hexIdentical.get(hash).remove(number);
             }
         }
-        return b;
     }
-    
+
 }
