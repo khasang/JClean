@@ -82,15 +82,15 @@ public class JContainer {
 
     public void deleteFiles(ArrayList<String> hashWithNumbers, String splitter) {
         for (String s : hashWithNumbers) {
-            String[] splitted = s.split("[" + splitter + "]"); //разбиваем строку и создаем массив из получившихся элементов
-            String hash = splitted[0]; //в первом элементе хранится хэш
-            for (int i = 1; i < splitted.length; i++) { //пробегаем массив, начиная со второго элемента
+            String[] splitted = s.split("[" + splitter + "]"); //СЂР°Р·Р±РёРІР°РµРј СЃС‚СЂРѕРєСѓ Рё СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ РёР· РїРѕР»СѓС‡РёРІС€РёС…СЃСЏ СЌР»РµРјРµРЅС‚РѕРІ
+            String hash = splitted[0]; //РІ РїРµСЂРІРѕР№ СЏС‡РµР№РєРµ С…СЂР°РЅРёС‚СЃСЏ С…СЌС€
+            for (int i = 1; i < splitted.length; i++) { //РїСЂРѕР±РµРіР°РµРј РјР°СЃСЃРёРІ, РЅР°С‡РёРЅР°СЏ СЃРѕ РІС‚РѕСЂРѕР№ СЏС‡РµР№РєРё
                 int number = Integer.parseInt(splitted[i]);
                 File file = new File(hexIdentical.get(hash).get(number).getPath());
                 if (file.delete()) {
-                    hexIdentical.get(hash).get(number).setFileDeleteError(false); //если файл удалился, помечаем флаг как false
+                    hexIdentical.get(hash).get(number).setFileDeleteError(false); //РµСЃР»Рё С„Р°Р№Р» СѓРґР°Р»РёР»СЃСЏ, РїРѕРјРµС‡Р°РµРј С„Р»Р°Рі РєР°Рє false
                 } else {
-                    hexIdentical.get(hash).get(number).setFileDeleteError(true); //если файл невозможно удалить, помечаем флаг как true
+                    hexIdentical.get(hash).get(number).setFileDeleteError(true); //РµСЃР»Рё С„Р°Р№Р» РЅРµ СѓРґР°Р»РёР»СЃСЏ, РїРѕРјРµС‡Р°РµРј С„Р»Р°Рі РєР°Рє true
                 }
             }
             deleteFilesFromMap(hash, splitted);
@@ -98,14 +98,14 @@ public class JContainer {
     }
 
     public void deleteFilesFromMap(String hash, String[] splitted) {
-        int[] numbers = new int[splitted.length - 1]; //создаем пустой массив для индексов файлов
+        int[] numbers = new int[splitted.length - 1]; //СЃРѕР·РґР°РµРј РїСѓСЃС‚РѕР№ РјР°СЃСЃРёРІ РґР»СЏ РёРЅРґРµРєСЃРѕРІ С„Р°Р№Р»РѕРІ
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = Integer.parseInt(splitted[i + 1]); //заполняем массив индексами файлов
+            numbers[i] = Integer.parseInt(splitted[i + 1]); //Р·Р°РїРѕР»РЅСЏРµРј РјР°СЃСЃРёРІ РёРЅРґРµРєСЃР°РјРё С„Р°Р№Р»РѕРІ
         }
-        Arrays.parallelSort(numbers); //быстрая сортировка элементов массива по возрастанию
-        for (int i = numbers.length - 1; i >= 0; i--) { //пробегаем массив с конца
+        Arrays.parallelSort(numbers); //Р±С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ
+        for (int i = numbers.length - 1; i >= 0; i--) { //РїСЂРѕР±РµРіР°РµРј РјР°СЃСЃРёРІ СЃ РєРѕРЅС†Р°
             int number = numbers[i];
-            if (!hexIdentical.get(hash).get(number).isFileDeleteError()) { // если файл был удален с диска, удалить его из карты
+            if (!hexIdentical.get(hash).get(number).isFileDeleteError()) { //РµСЃР»Рё С„Р°Р№Р» Р±С‹Р» СѓРґР°Р»РµРЅ СЃ РґРёСЃРєР° (С„Р»Р°Рі СѓСЃС‚Р°РЅРѕРІР»РµРЅ РєР°Рє false), СѓРґР°Р»РёС‚СЊ РµРіРѕ РёР· РєР°СЂС‚С‹
                 hexIdentical.get(hash).remove(number);
             }
         }
