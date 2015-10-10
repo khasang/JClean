@@ -3,33 +3,51 @@
     -fx-font-family: "Segoe UI Semibold";
     -fx-font-color: #68B6CE;
 }
-.backgroundTopMenu {
+.background_top_menu {
     -fx-background-color: #2F3597;
 }
-.topPaneColor {
+.top_pane_color {
     -fx-background-color: #424EB4;
 }
-.topMenuButtom {
-    -fx-background-color: #2F3597; 
-}
-.addButton {
-    -fx-background-image: no-repeat;
+.add_button {
     -fx-background-color: #FD3E80;
     -fx-background-radius: 75, 75;
     -fx-background-insets: -1.7, 0;
 }
-.addBbuttonInner {
-    -fx-background-image: no-repeat;
+.add_button_inner {
     -fx-background-radius: 75, 75;
     -fx-background-insets: -1.7, 0;
     -fx-padding: 0;
     -fx-font-size: 0;
 }
-.CloseWindow {
-    -fx-graphic: url("images/close.png");
-/*    -fx-background-image: url("images/close.png");*/
-    -fx-size: 35;
+.top_menu_button {
+    -fx-background-color: #2F3597;
 }
-.test {
-    -fx-graphic: url("images/paper-fab%20add.png");
+.top_menu_button:hover {
+    -fx-background-color: #9b9caf;
 }
+.close_window_button {
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/close.png");
+    -fx-background-size: 12px;
+}
+.maximaze_window_button {
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/window.png");
+    -fx-background-size: 12px;
+}
+.minimize_window_button {
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/minus.png");
+    -fx-background-size: 12px;
+}
+.logo {
+    -fx-background-size: 200px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/logo.png");
+}
+.menu_button {
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/menu.png");
+}
+

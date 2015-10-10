@@ -1,38 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
-<AnchorPane fx:id="topMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="topMenu" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="menu_button" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button blendMode="SRC_ATOP" layoutX="692.0" layoutY="44.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="56.0" styleClass="addBbuttonInner">
+      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button_inner">
          <effect>
             <DropShadow radius="13.5" width="35.0" />
          </effect>
       </Button>
-      <Pane layoutY="24.0" prefHeight="46.0" prefWidth="800.0" styleClass="topPaneColor" stylesheets="@style.css">
+      <Pane layoutY="24.0" prefHeight="40.0" prefWidth="960.0" styleClass="top_pane_color">
          <effect>
             <DropShadow radius="13.5" width="35.0" />
-         </effect></Pane>
-      <Label layoutX="303.0" layoutY="519.0" styleClass="font" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" />
-      <Pane prefHeight="26.0" prefWidth="800.0" styleClass="backgroundTopMenu">
+         </effect>
          <children>
-            <Button id="CloseWindow" fx:id="topMenuCloseButtom" layoutX="770.0" mnemonicParsing="false" onAction="#setTopMenuCloseButtom" prefHeight="25.0" prefWidth="25.0" />
-            <Button fx:id="topMenuMaximazeButtom" layoutX="731.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
-            <Button fx:id="topMenuHideButtom" layoutX="693.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
+            <Pane layoutX="14.0" layoutY="15.0" prefHeight="11.0" prefWidth="17.0" styleClass="menu_button" />
+         </children></Pane>
+      <Label layoutX="347.0" layoutY="572.0" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#2196f3">
+         <font>
+            <Font name="Microsoft JhengHei UI Bold" size="17.0" />
+         </font></Label>
+      <Pane prefHeight="26.0" prefWidth="960.0" styleClass="background_top_menu">
+         <children>
+            <Pane layoutX="937.0" layoutY="7.0" opacity="0.21" prefHeight="12.0" prefWidth="12.0" styleClass="close_window_button" />
+            <Pane layoutX="909.0" layoutY="7.0" opacity="0.21" prefHeight="12.0" prefWidth="12.0" styleClass="maximaze_window_button" />
+            <Pane layoutX="879.0" layoutY="7.0" opacity="0.21" prefHeight="12.0" prefWidth="12.0" styleClass="minimize_window_button" />
          </children>
       </Pane>
-      <Button blendMode="SRC_ATOP" layoutX="692.0" layoutY="44.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="56.0" styleClass="addButton">
+      <Pane layoutX="380.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" styleClass="logo" AnchorPane.topAnchor="158.0" />
+      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
+      <Pane layoutX="888.0" layoutY="63.0" prefHeight="2.0" prefWidth="14.0" style="-fx-background-color: white;" />
+      <Pane layoutX="894.0" layoutY="57.0" prefHeight="14.0" prefWidth="2.0" style="-fx-background-color: white;" />
+      <Label layoutX="283.0" layoutY="347.0" prefHeight="93.0" prefWidth="396.0" text="Сканирование всего компьютера для поиска дубликатов файлов" textAlignment="CENTER" textFill="#898989" wrapText="true">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="292.0" layoutY="433.0" prefHeight="59.0" prefWidth="377.0" text="Если хотите искать только в выбраных папках, добавьте их, нажав &quot;плюсик&quot;" textAlignment="CENTER" textFill="#898989" wrapText="true">
+         <font>
+            <Font name="Microsoft JhengHei UI" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
