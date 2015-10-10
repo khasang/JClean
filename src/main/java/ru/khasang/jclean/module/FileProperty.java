@@ -10,6 +10,7 @@ public class FileProperty {
     private String fileType;
     private String fileName;
     private String fileExtension;
+    private boolean fileDeleteError;
 
     public FileProperty(File file) {
         setFileName(file.getName());
@@ -65,5 +66,13 @@ public class FileProperty {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public void setFileDeleteError(boolean fileDeleteError) {
+        this.fileDeleteError = fileDeleteError;
+    }
+
+    public boolean isFileDeleteError() {
+        return fileDeleteError;
     }
 }
