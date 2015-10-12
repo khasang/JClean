@@ -1,6 +1,5 @@
 
 .font {
-    -fx-font-family: "Segoe UI Semibold";
     -fx-font-color: #68B6CE;
 }
 .background_top_menu {
@@ -23,17 +22,12 @@
 .top_menu_button {
     -fx-background-color: #2F3597;
 }
-.top_menu_button:hover {
+.top_menu_button_h:hover {
     -fx-background-color: #9b9caf;
 }
 .close_window_button {
     -fx-background-repeat: no-repeat;
     -fx-background-image: url("images/close.png");
-    -fx-background-size: 12px;
-}
-.maximaze_window_button {
-    -fx-background-repeat: no-repeat;
-    -fx-background-image: url("images/window.png");
     -fx-background-size: 12px;
 }
 .minimize_window_button {

@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="topMenu" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="menu_button" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="menu_button" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button_inner">
          <effect>
-            <DropShadow radius="13.5" width="35.0" />
+            <DropShadow height="15.0" radius="7.0" width="15.0" />
          </effect>
       </Button>
       <Pane layoutY="24.0" prefHeight="40.0" prefWidth="960.0" styleClass="top_pane_color">
          <effect>
-            <DropShadow radius="13.5" width="35.0" />
+            <DropShadow height="40.0" radius="9.5" width="0.0" />
          </effect>
          <children>
             <Pane layoutX="14.0" layoutY="15.0" prefHeight="11.0" prefWidth="17.0" styleClass="menu_button" />
+            <Label layoutX="41.0" layoutY="10.0" prefHeight="17.0" prefWidth="50.0" text="JClean" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="16.0" />
+               </font>
+            </Label>
          </children></Pane>
       <Label layoutX="347.0" layoutY="572.0" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#2196f3">
          <font>
@@ -27,19 +33,16 @@
          </font></Label>
       <Pane prefHeight="26.0" prefWidth="960.0" styleClass="background_top_menu">
          <children>
-            <Pane layoutX="937.0" layoutY="7.0" opacity="0.21" prefHeight="12.0" prefWidth="12.0" styleClass="close_window_button" />
-            <Pane layoutX="909.0" layoutY="7.0" opacity="0.21" prefHeight="12.0" prefWidth="12.0" styleClass="maximaze_window_button" />
-            <Pane layoutX="879.0" layoutY="7.0" opacity="0.21" prefHeight="12.0" prefWidth="12.0" styleClass="minimize_window_button" />
+            <Button layoutX="914.0" layoutY="-2.0" mnemonicParsing="false" onAction="#setTopMenuCloseButton" onMouseClicked="#setTopMenuCloseButton" prefHeight="21.0" prefWidth="40.0">
+               <styleClass>
+                  <String fx:value="background_top_menu" />
+                  <String fx:value="top_menu_button_h" />
+               </styleClass>
+            </Button>
+            <Pane layoutX="928.0" layoutY="7.0" prefHeight="12.0" prefWidth="12.0" styleClass="close_window_button" />
          </children>
       </Pane>
       <Pane layoutX="380.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" styleClass="logo" AnchorPane.topAnchor="158.0" />
-      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Pane layoutX="888.0" layoutY="63.0" prefHeight="2.0" prefWidth="14.0" style="-fx-background-color: white;" />
-      <Pane layoutX="894.0" layoutY="57.0" prefHeight="14.0" prefWidth="2.0" style="-fx-background-color: white;" />
       <Label layoutX="283.0" layoutY="347.0" prefHeight="93.0" prefWidth="396.0" text="Сканирование всего компьютера для поиска дубликатов файлов" textAlignment="CENTER" textFill="#898989" wrapText="true">
          <font>
             <Font name="Microsoft JhengHei Bold" size="23.0" />
@@ -50,5 +53,12 @@
             <Font name="Microsoft JhengHei UI" size="15.0" />
          </font>
       </Label>
+      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Pane layoutX="894.0" layoutY="57.0" prefHeight="14.0" prefWidth="2.0" style="-fx-background-color: white;" />
+      <Pane layoutX="888.0" layoutY="63.0" prefHeight="2.0" prefWidth="14.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>
