@@ -51,12 +51,14 @@ public class JContainer {
     }
 
     private void findDuplicatesInFiles(FileProperty currentFile) {
+        String currentFileHash = null;
         if (isFileUnlocked(currentFile.getPath())) {
             for (FileProperty file : filesOfDirectory) {
                 if (currentFile.getSize() == file.getSize() && isFileUnlocked(file.getPath())) {
                     String fileHash = FileHash.getHash(file.getPath(), file.getSize());
-                    String currentFileHash = FileHash.getHash(currentFile.getPath(), currentFile.getSize());
-                    if (currentFileHash.equals(fileHash)) {
+                    if (currentFileHash == null) {
+                        currentFileHash = FileHash.getHash(currentFile.getPath(), currentFile.getSize());
+                    } else if (currentFileHash.equals(fileHash)) {
                         addFileToDuplicates(currentFile, currentFileHash, file);
                         return;
                     }
