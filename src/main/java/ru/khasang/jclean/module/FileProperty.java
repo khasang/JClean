@@ -1,4 +1,5 @@
 package ru.khasang.jclean.module;
+
 import java.io.File;
 
 public class FileProperty {
@@ -8,12 +9,23 @@ public class FileProperty {
     private String path;
     private String fileType;
     private String fileName;
+    private String fileExtension;
+    private boolean fileDeleteError;
 
     public FileProperty(File file) {
         setFileName(file.getName());
         setPath(file.getAbsolutePath());
         setSize(file.length());
-        setFileType(getFileExtension(getPath()));
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtensionAndType() {
+        int dotPos = fileName.lastIndexOf(".");
+        this.fileExtension = dotPos != -1 ? fileName.substring(dotPos + 1) : "";
+        fileType = FileTypeQualifier.getFileType(fileExtension);
     }
 
     public boolean isMarked() {
@@ -56,10 +68,11 @@ public class FileProperty {
         this.fileName = fileName;
     }
 
-    public String getFileExtension(String fullPath) {
-        int sepPos = fullPath.lastIndexOf(File.separator);
-        String nameAndExt = fullPath.substring(sepPos + 1, fullPath.length());
-        int dotPos = nameAndExt.lastIndexOf(".");
-        return dotPos != -1 ? nameAndExt.substring(dotPos + 1) : "";
+    public void setFileDeleteError(boolean fileDeleteError) {
+        this.fileDeleteError = fileDeleteError;
+    }
+
+    public boolean isFileDeleteError() {
+        return fileDeleteError;
     }
 }
