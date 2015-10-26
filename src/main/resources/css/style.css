@@ -1,0 +1,47 @@
+
+.font {
+    -fx-font-color: #68B6CE;
+}
+.background_top_menu {
+    -fx-background-color: #2F3597;
+}
+.top_pane_color {
+    -fx-background-color: #424EB4;
+}
+.add_button {
+    -fx-background-color: #FD3E80;
+    -fx-background-radius: 75, 75;
+    -fx-background-insets: -1.7, 0;
+}
+.add_button_inner {
+    -fx-background-radius: 75, 75;
+    -fx-background-insets: -1.7, 0;
+    -fx-padding: 0;
+    -fx-font-size: 0;
+}
+.top_menu_button {
+    -fx-background-color: #2F3597;
+}
+.top_menu_button_h:hover {
+    -fx-background-color: #9b9caf;
+}
+.close_window_button {
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/close.png");
+    -fx-background-size: 12px;
+}
+.minimize_window_button {
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/minus.png");
+    -fx-background-size: 12px;
+}
+.logo {
+    -fx-background-size: 200px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/logo.png");
+}
+.menu_button {
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("images/menu.png");
+}
+
