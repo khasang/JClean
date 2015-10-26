@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="menu_button" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="menu_button" stylesheets="@/css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.khasang.jclean.controller.MainWindowControl">
    <children>
       <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button_inner">
          <effect>
@@ -33,13 +33,13 @@
          </font></Label>
       <Pane prefHeight="26.0" prefWidth="960.0" styleClass="background_top_menu">
          <children>
-            <Button layoutX="914.0" layoutY="-2.0" mnemonicParsing="false" onAction="#setTopMenuCloseButton" onMouseClicked="#setTopMenuCloseButton" prefHeight="21.0" prefWidth="40.0">
+            <Button layoutX="914.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="40.0">
                <styleClass>
                   <String fx:value="background_top_menu" />
                   <String fx:value="top_menu_button_h" />
                </styleClass>
             </Button>
-            <Pane layoutX="928.0" layoutY="7.0" prefHeight="12.0" prefWidth="12.0" styleClass="close_window_button" />
+            <Pane fx:id="closeButton" layoutX="928.0" layoutY="7.0" prefHeight="12.0" prefWidth="12.0" onMouseEntered="#closeButtonClicked" styleClass="close_window_button" />
          </children>
       </Pane>
       <Pane layoutX="380.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" styleClass="logo" AnchorPane.topAnchor="158.0" />
