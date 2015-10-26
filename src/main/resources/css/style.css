@@ -27,21 +27,21 @@
 }
 .close_window_button {
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("images/close.png");
+    -fx-background-image: url("/images/close.png");
     -fx-background-size: 12px;
 }
 .minimize_window_button {
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("images/minus.png");
+    -fx-background-image: url("/images/minus.png");
     -fx-background-size: 12px;
 }
 .logo {
     -fx-background-size: 200px;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("images/logo.png");
+    -fx-background-image: url("/images/logo.png");
 }
 .menu_button {
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("images/menu.png");
+    -fx-background-image: url("/images/menu.png");
 }
 
