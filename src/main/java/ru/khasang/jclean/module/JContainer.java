@@ -1,7 +1,6 @@
 package ru.khasang.jclean.module;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +37,6 @@ public class JContainer {
         File[] files = folder.listFiles();
         if (files != null) {
             for (File file : files) {
-                if (!(file.canRead() && file.canExecute())) continue;
                 if (file.isDirectory()) {
                     findIdenticalFilesInFolder(file);
                 } else if (file.isFile()) {
@@ -52,26 +50,26 @@ public class JContainer {
 
     private void findDuplicatesInFiles(FileProperty currentFile) {
         String currentFileHash = null;
-        if (isFileUnlocked(currentFile.getPath())) {
-            for (FileProperty file : filesOfDirectory) {
-                if (currentFile.getSize() == file.getSize() && isFileUnlocked(file.getPath())) {
-                    String fileHash = FileHash.getHash(file.getPath(), file.getSize());
-                    if (currentFileHash == null) {
+        String fileHash;
+        for (FileProperty file : filesOfDirectory) {
+            if (currentFile.getSize() == file.getSize()) {
+                try {
+                    fileHash = FileHash.getHash(file.getPath(), file.getSize());
+                } catch (IOException e) {
+                    continue;
+                }
+                if (currentFileHash == null) {
+                    try {
                         currentFileHash = FileHash.getHash(currentFile.getPath(), currentFile.getSize());
-                    } else if (currentFileHash.equals(fileHash)) {
-                        addFileToDuplicates(currentFile, currentFileHash, file);
+                    } catch (IOException e) {
                         return;
                     }
                 }
+                if (currentFileHash.equals(fileHash)) {
+                    addFileToDuplicates(currentFile, currentFileHash, file);
+                    return;
+                }
             }
-        }
-    }
-
-    public static boolean isFileUnlocked(String file) {
-        try (FileInputStream fin = new FileInputStream(file)) {
-            return true;
-        } catch (IOException e) {
-            return false;
         }
     }
 
