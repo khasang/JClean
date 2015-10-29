@@ -12,6 +12,9 @@
     -fx-background-color: #FD3E80;
     -fx-background-radius: 75, 75;
     -fx-background-insets: -1.7, 0;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-image: url("../images/cross.png");
 }
 .add_button_inner {
     -fx-background-radius: 75, 75;
@@ -27,21 +30,20 @@
 }
 .close_window_button {
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("/images/close.png");
+    -fx-background-image: url("../images/close.png");
     -fx-background-size: 12px;
 }
 .minimize_window_button {
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("/images/minus.png");
+    -fx-background-image: url("../images/minus.png");
     -fx-background-size: 12px;
 }
 .logo {
     -fx-background-size: 200px;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("/images/logo.png");
+    -fx-background-image: url("../images/logo.png");
 }
 .menu_button {
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url("/images/menu.png");
+    -fx-background-image: url("../images/menu.png");
 }
-
