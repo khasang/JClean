@@ -11,6 +11,7 @@ public class FileProperty {
     private String fileName;
     private String fileExtension;
     private boolean fileDeleteError;
+    private boolean isFirstDouble = false;
 
     public FileProperty(File file) {
         setFileName(file.getName());
@@ -18,8 +19,20 @@ public class FileProperty {
         setSize(file.length());
     }
 
+    public boolean isFirstDouble() {
+        return isFirstDouble;
+    }
+
+    public void setIsFirstDouble(boolean isFirstDouble) {
+        this.isFirstDouble = isFirstDouble;
+    }
+
     public String getFileExtension() {
         return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
     }
 
     public void setFileExtensionAndType() {

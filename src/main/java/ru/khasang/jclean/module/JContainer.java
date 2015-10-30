@@ -1,23 +1,20 @@
 package ru.khasang.jclean.module;
 
+import javafx.application.Platform;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 public class JContainer {
-
     private HashMap<String, ArrayList<FileProperty>> hexIdentical = new HashMap<>();
-    private ArrayList<FileProperty> filesOfDirectory = new ArrayList<>();
+    private HashMap<Long, FileProperty> sizeDoubles = new HashMap<>();
+    private HashMap<String, FileProperty> hexDoubles = new HashMap<>();
+
     private ArrayList<String> fileFolders;
 
     public HashMap<String, ArrayList<FileProperty>> getHexIdentical() {
         return hexIdentical;
-    }
-
-    public ArrayList<String> getFileFolders() {
-        return fileFolders;
     }
 
     public void setFileFolders(ArrayList<String> fileFolders) {
@@ -26,7 +23,6 @@ public class JContainer {
 
     public void findAllIdenticalFiles() {
         hexIdentical.clear();
-        filesOfDirectory.clear();
         for (String folderPath : fileFolders) {
             File folder = new File(folderPath);
             findIdenticalFilesInFolder(folder);
@@ -41,48 +37,55 @@ public class JContainer {
                     findIdenticalFilesInFolder(file);
                 } else if (file.isFile()) {
                     FileProperty currentFile = new FileProperty(file);
-                    findDuplicatesInFiles(currentFile);
-                    filesOfDirectory.add(currentFile);
+                        try {
+                            makeMagic(currentFile);
+                        } catch (IOException e) {
+                        }
                 }
             }
         }
     }
 
-    private void findDuplicatesInFiles(FileProperty currentFile) {
-        String currentFileHash = null;
-        String fileHash;
-        for (FileProperty file : filesOfDirectory) {
-            if (currentFile.getSize() == file.getSize()) {
-                try {
-                    fileHash = FileHash.getHash(file.getPath(), file.getSize());
-                } catch (IOException e) {
-                    continue;
+    private void makeMagic(FileProperty currentFile) throws IOException {
+        FileProperty fromMapFile = sizeDoubles.get(currentFile.getSize());
+        if(fromMapFile != null) { // Опа! Нашли дубль
+            String curHex = FileHash.getHash(currentFile.getPath(), currentFile.getSize());
+            String mapHex = FileHash.getHash(fromMapFile.getPath(), fromMapFile.getSize());
+            if(curHex.equals(mapHex)) { //Внатуре одинаковые
+                if(fromMapFile.isFirstDouble()){
+                    addToHexIdentical(currentFile, curHex);
+                }else {
+                    fromMapFile.setIsFirstDouble(true);
+                    addToHexIdentical(fromMapFile, mapHex);
+                    addToHexIdentical(currentFile, curHex);
                 }
-                if (currentFileHash == null) {
-                    try {
-                        currentFileHash = FileHash.getHash(currentFile.getPath(), currentFile.getSize());
-                    } catch (IOException e) {
-                        return;
+            } else { //Размер один, а файлы то, разные
+                FileProperty fp = hexDoubles.get(curHex);
+                if(fp != null) {
+                    if(fp.isFirstDouble()) {
+                        addToHexIdentical(currentFile, curHex);
+                    }else {
+                        fp.setIsFirstDouble(true);
+                        addToHexIdentical(currentFile, curHex);
+                        addToHexIdentical(fp, curHex);
                     }
-                }
-                if (currentFileHash.equals(fileHash)) {
-                    addFileToDuplicates(currentFile, currentFileHash, file);
-                    return;
+                } else {
+                    hexDoubles.put(curHex, currentFile);
                 }
             }
+        } else {
+            sizeDoubles.put(currentFile.getSize(), currentFile);
         }
     }
 
-    private void addFileToDuplicates(FileProperty currentFile, String currentFileHash, FileProperty fileFromList) {
-        currentFile.setFileExtensionAndType();
-        if (hexIdentical.get(currentFileHash) == null) {
-            fileFromList.setFileExtensionAndType();
+    private void addToHexIdentical(FileProperty fileProperty, String hex) {
+        fileProperty.setFileExtensionAndType();
+        if (hexIdentical.get(hex) == null) {
             ArrayList<FileProperty> arrayWithCopies = new ArrayList<>();
-            arrayWithCopies.add(currentFile);
-            arrayWithCopies.add(fileFromList);
-            hexIdentical.put(currentFileHash, arrayWithCopies);
+            arrayWithCopies.add(fileProperty);
+            hexIdentical.put(hex, arrayWithCopies);
         } else {
-            hexIdentical.get(currentFileHash).add(currentFile);
+            hexIdentical.get(hex).add(fileProperty);
         }
     }
 
