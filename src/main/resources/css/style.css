@@ -31,7 +31,10 @@
     -fx-background-size: 12px;
 }
 .close_window_button:hover{
-        -fx-background-color: #9b9caf;
+    -fx-background-color: #9b9caf;
+}
+.close_window_button:active{
+    -fx-background-color: red;
 }
 .minimize_window_button {
     -fx-background-repeat: no-repeat;

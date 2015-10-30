@@ -33,12 +33,6 @@
          </font></Label>
       <Pane prefHeight="26.0" prefWidth="960.0" styleClass="background_top_menu">
          <children>
-            <Button layoutX="918.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
-               <styleClass>
-                  <String fx:value="background_top_menu" />
-                  <String fx:value="top_menu_button_h" />
-               </styleClass>
-            </Button>
             <Pane fx:id="closeButton" layoutX="928.0" layoutY="7.0" onMouseEntered="#closeButtonClicked" prefHeight="12.0" prefWidth="12.0" styleClass="close_window_button" />
          </children>
       </Pane>
