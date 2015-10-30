@@ -7,19 +7,20 @@ import java.security.NoSuchAlgorithmException;
 
 public class FileHash {
 
-    
     private final static int PERCENT = 1;
 
-    public static int getPERCENT() { return PERCENT; }
+    public static int getPERCENT() {
+        return PERCENT;
+    }
 
-    public static String getHash(String path, long size) {
+    public static String getHash(String path, long size) throws IOException {
         long currentBufferReadPiece = size * PERCENT / 100;
         int bufferReadPiece = (int) currentBufferReadPiece;
         return getFastHash(path, size, bufferReadPiece);
     }
 
-    public static String getFastHash(String path, long fileSize, int bufferReadPiece) {
-        StringBuffer hexString = null;
+    public static String getFastHash(String path, long fileSize, int bufferReadPiece) throws IOException {
+        byte[] hash = null;
         try (FileInputStream fin = new FileInputStream(path)) // создаем поток чтения байтов из файла
         {
             int bufferSize = bufferReadPiece * 2;
@@ -30,17 +31,19 @@ public class FileHash {
             MessageDigest md5 = MessageDigest.getInstance("MD5");// создаем объект, инкапсулирующий алгоритм MD5
             md5.reset();
             md5.update(buff);// генерируем хэш-код на основе данных из вспомогательного массива
-            byte[] hash = md5.digest();// получаем хэш-код в другой вспомогательный массив
-            hexString = new StringBuffer();
-            for (byte hashData : hash) {// переводим хэш-код в 16-ое представление
+            hash = md5.digest();// получаем хэш-код в другой вспомогательный массив
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        // переводим хэш-код в 16-ое представление
+        StringBuilder hexString = new StringBuilder();
+        if (hash != null) {
+            for (byte hashData : hash) {
                 String hex = Integer.toHexString(0xff & hashData);
                 if (hex.length() == 1) hexString.append('0');
                 hexString.append(hex);
             }
-        } catch (IOException | NoSuchAlgorithmException e) {
-            e.printStackTrace();
         }
         return hexString.toString();
     }
-
 }
