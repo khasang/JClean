@@ -33,7 +33,7 @@
          </font></Label>
       <Pane prefHeight="26.0" prefWidth="960.0" styleClass="background_top_menu">
          <children>
-            <Button layoutX="914.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="40.0">
+            <Button layoutX="918.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
                <styleClass>
                   <String fx:value="background_top_menu" />
                   <String fx:value="top_menu_button_h" />
