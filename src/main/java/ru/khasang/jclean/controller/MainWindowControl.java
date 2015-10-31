@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 public class MainWindowControl implements Initializable {
 
     @FXML private Pane closeButton;
+    @FXML private Pane minimaizeButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -24,6 +25,13 @@ public class MainWindowControl implements Initializable {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> {
             System.exit(0);
+        });
+    }
+
+    @FXML void minimaizeButtonClicked() {
+        Stage stage = (Stage) minimaizeButton.getScene().getWindow();
+        stage.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> {
+            stage.setIconified(true);
         });
     }
 }

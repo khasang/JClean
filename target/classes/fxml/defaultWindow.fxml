@@ -27,9 +27,9 @@
                </font>
             </Label>
          </children></Pane>
-      <Label layoutX="383.0" layoutY="577.0" styleClass="test" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#2196f3">
+      <Label layoutX="292.0" layoutY="544.0" styleClass="font" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#2196f3">
          <font>
-            <Font size="14.0" />
+            <Font size="26.0" />
          </font></Label>
       <Pane prefHeight="28.0" prefWidth="960.0" styleClass="background_top_menu">
          <children>
