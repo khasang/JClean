@@ -33,7 +33,7 @@
 .close_window_button:hover{
     -fx-background-color: #9b9caf;
 }
-.close_window_button:active{
+.close_window_button:pressed{
     -fx-background-color: red;
 }
 .minimize_window_button {
