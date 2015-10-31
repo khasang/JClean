@@ -41,6 +41,12 @@
     -fx-background-image: url("../images/minus.png");
     -fx-background-size: 12px;
 }
+.minimize_window_button:hover{
+    -fx-background-color: #9b9caf;
+}
+.minimize_window_button:pressed{
+    -fx-background-color: red;
+}
 .logo {
     -fx-background-size: 200px;
     -fx-background-repeat: no-repeat;

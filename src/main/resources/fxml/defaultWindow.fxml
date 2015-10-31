@@ -34,6 +34,7 @@
       <Pane prefHeight="26.0" prefWidth="960.0" styleClass="background_top_menu">
          <children>
             <Pane fx:id="closeButton" layoutX="928.0" layoutY="7.0" onMouseEntered="#closeButtonClicked" prefHeight="12.0" prefWidth="12.0" styleClass="close_window_button" />
+            <Pane fx:id="minimizeButton" layoutX="908.0" layoutY="7.0" onMouseEntered="#closeButtonClicked" prefHeight="12.0" prefWidth="12.0" styleClass="minimize_window_button" />
          </children>
       </Pane>
       <Pane layoutX="380.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" styleClass="logo" AnchorPane.topAnchor="158.0" />
