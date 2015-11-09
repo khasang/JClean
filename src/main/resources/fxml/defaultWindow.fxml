@@ -10,7 +10,7 @@
 
 <AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="menu_button" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.khasang.jclean.controller.MainWindowControl">
    <children>
-      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button_inner">
+      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button_inner">
          <effect>
             <DropShadow height="15.0" radius="7.0" width="15.0" />
          </effect>
@@ -40,7 +40,7 @@
       <Pane layoutX="380.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" styleClass="logo" AnchorPane.topAnchor="158.0" />
       <Label layoutX="283.0" layoutY="347.0" prefHeight="93.0" prefWidth="396.0" styleClass="font" text="Сканирование всего компьютера для поиска дубликатов файлов" textAlignment="CENTER" textFill="#898989" wrapText="true" />
       <Label layoutX="292.0" layoutY="433.0" prefHeight="59.0" prefWidth="377.0" styleClass="font" text="Если хотите искать только в выбраных папках, добавьте их, нажав &quot;плюсик&quot;" textAlignment="CENTER" textFill="#898989" wrapText="true" />
-      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button">
+      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
