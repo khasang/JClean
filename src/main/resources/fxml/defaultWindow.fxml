@@ -29,21 +29,36 @@
          </children></Pane>
       <Label layoutX="383.0" layoutY="577.0" styleClass="test" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#2196f3">
          <font>
-            <Font size="14.0" />
+            <Font name="Microsoft JhengHei UI Bold" size="17.0" />
          </font></Label>
-      <Pane prefHeight="28.0" prefWidth="960.0" styleClass="background_top_menu">
+      <Pane fx:id="top_pane" prefHeight="26.0" prefWidth="960.0" onMouseEntered="#draggWindow" styleClass="background_top_menu">
          <children>
-            <Pane fx:id="minimaizeButton" layoutX="865.0" onMouseEntered="#minimaizeButtonClicked" prefHeight="26.0" prefWidth="46.0" styleClass="minimize_window_button" />
-            <Pane fx:id="closeButton" layoutX="914.0" onMouseEntered="#closeButtonClicked" prefHeight="26.0" prefWidth="46.0" styleClass="close_window_button" />
+            <Button layoutX="914.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="40.0">
+               <styleClass>
+                  <String fx:value="background_top_menu" />
+                  <String fx:value="top_menu_button_h" />
+               </styleClass>
+            </Button>
+            <Pane fx:id="closeButton" layoutX="928.0" layoutY="7.0" prefHeight="12.0" prefWidth="12.0" onMouseEntered="#closeButtonClicked" styleClass="close_window_button" />
          </children>
       </Pane>
       <Pane layoutX="380.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" styleClass="logo" AnchorPane.topAnchor="158.0" />
-      <Label layoutX="283.0" layoutY="347.0" prefHeight="93.0" prefWidth="396.0" styleClass="font" text="Сканирование всего компьютера для поиска дубликатов файлов" textAlignment="CENTER" textFill="#898989" wrapText="true" />
-      <Label layoutX="292.0" layoutY="433.0" prefHeight="59.0" prefWidth="377.0" styleClass="font" text="Если хотите искать только в выбраных папках, добавьте их, нажав &quot;плюсик&quot;" textAlignment="CENTER" textFill="#898989" wrapText="true" />
+      <Label layoutX="283.0" layoutY="347.0" prefHeight="93.0" prefWidth="396.0" text="Сканирование всего компьютера для поиска дубликатов файлов" textAlignment="CENTER" textFill="#898989" wrapText="true">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="292.0" layoutY="433.0" prefHeight="59.0" prefWidth="377.0" text="Если хотите искать только в выбраных папках, добавьте их, нажав &quot;плюсик&quot;" textAlignment="CENTER" textFill="#898989" wrapText="true">
+         <font>
+            <Font name="Microsoft JhengHei UI" size="15.0" />
+         </font>
+      </Label>
       <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Pane layoutX="894.0" layoutY="57.0" prefHeight="14.0" prefWidth="2.0" style="-fx-background-color: white;" />
+      <Pane layoutX="888.0" layoutY="63.0" prefHeight="2.0" prefWidth="14.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>
