@@ -3,6 +3,7 @@ package ru.khasang.jclean.controller;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -13,7 +14,7 @@ import java.util.ResourceBundle;
 public class MainWindowControl implements Initializable {
 
     @FXML
-    private Pane closeButton;
+    private Button closeButton;
     @FXML
     private Pane top_pane;
     private static double xOffset;
@@ -27,7 +28,7 @@ public class MainWindowControl implements Initializable {
     @FXML
     void closeButtonClicked() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> {
+        stage.addEventFilter(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             System.exit(0);
         });
     }

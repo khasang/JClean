@@ -12,7 +12,7 @@ public class Window extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        String sceneFile = "fxml/defaultWindow.fxml";
+        String sceneFile = "fxml/mainWindow.fxml";
         Parent root;
         URL url = null;
         try {
