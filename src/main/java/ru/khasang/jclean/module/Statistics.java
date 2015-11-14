@@ -12,7 +12,7 @@ public class Statistics {
         return i;
     }
 
-    public static int getGroupDublicates(HashMap<String, ArrayList<FileProperty>> hexIdentical, String type){
+    public static int getGroupTotalDublicates(HashMap<String, ArrayList<FileProperty>> hexIdentical, String type){
         int i = 0;
         for (ArrayList<FileProperty> arrayList : hexIdentical.values()){
             for (FileProperty property : arrayList) {
