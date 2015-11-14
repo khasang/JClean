@@ -34,6 +34,10 @@ public class FileTypeQualifier {
         put("text", TEXT);
     }};
 
+    public static HashMap<String, String[]> getTypeList() {
+        return typeList;
+    }
+
     public static String getFileType(String fileExtension) {
         for (Map.Entry<String, String[]> type : typeList.entrySet()) {
             if (compareWithExtensionList(type.getValue(), fileExtension)) {

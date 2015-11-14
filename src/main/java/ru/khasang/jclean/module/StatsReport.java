@@ -1,12 +1,18 @@
 package ru.khasang.jclean.module;
 
-/**
- * Created by demon on 14.11.2015.
- */
 public class StatsReport {
     private String typeName;
     private long amount;
     private long size;
+
+    public StatsReport() {
+    }
+
+    public StatsReport(String typeName, long amount, long size) {
+        this.typeName = typeName;
+        this.amount = amount;
+        this.size = size;
+    }
 
     public String getTypeName() {
         return typeName;
