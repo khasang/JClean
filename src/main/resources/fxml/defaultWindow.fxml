@@ -31,7 +31,7 @@
          <font>
             <Font name="Microsoft JhengHei UI Bold" size="17.0" />
          </font></Label>
-      <Pane fx:id="top_pane" prefHeight="26.0" prefWidth="960.0" onMouseEntered="#draggWindow" styleClass="background_top_menu">
+      <Pane fx:id="top_pane" prefHeight="26.0" prefWidth="960.0" onMouseEntered="#dragWindow" styleClass="background_top_menu">
          <children>
             <Button layoutX="914.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="40.0">
                <styleClass>

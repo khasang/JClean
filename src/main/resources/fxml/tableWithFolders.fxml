@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fx:controller="ru.khasang.jclean.controller.MainWindowControl"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED">
+    <GridPane alignment="TOP_LEFT" hgap="10" vgap="10">
+        <padding>
+            <Insets top="50" right="25" bottom="50" left="25"/>
+        </padding>
+    </GridPane>
+</ScrollPane>

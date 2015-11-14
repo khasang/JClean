@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -9,7 +8,7 @@
 
 <BorderPane maxHeight="2000.0" maxWidth="2500.0" minHeight="230.0" minWidth="450.0" prefHeight="600.0" prefWidth="960.0" style="-fx-min-width: 200px; -fx-min-height: 200px; -fx-border-color: black;" styleClass="global_background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.khasang.jclean.controller.MainWindowControl">
    <top>
-      <HBox fx:id="top_pane" onMouseEntered="#draggWindow" styleClass="background_top_menu" BorderPane.alignment="CENTER">
+      <HBox fx:id="top_pane" onMouseEntered="#dragWindow" styleClass="background_top_menu" BorderPane.alignment="CENTER">
          <children>
             <Pane prefWidth="2000.0">
                <padding>
@@ -35,7 +34,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane prefHeight="525.0" prefWidth="960.0">
+            <StackPane fx:id="center_area" prefHeight="525.0" prefWidth="960.0">
                <children>
                   <VBox alignment="CENTER" maxHeight="500.0" prefHeight="344.0" prefWidth="600.0" StackPane.alignment="BOTTOM_CENTER">
                      <children>
@@ -79,7 +78,7 @@
                         <DropShadow color="#979797" height="10.0" offsetY="5.0" radius="4.5" width="10.0" />
                      </effect>
                   </HBox>
-                  <Button fx:id="plusButton" defaultButton="true" maxHeight="60.0" maxWidth="62.0" pickOnBounds="false" styleClass="add_button" StackPane.alignment="TOP_RIGHT">
+                  <Button fx:id="plusButton" defaultButton="true" maxHeight="60.0" maxWidth="62.0" pickOnBounds="false" styleClass="add_button" StackPane.alignment="TOP_RIGHT" onAction="#onPlusButton">
                      <StackPane.margin>
                         <Insets right="36.0" />
                      </StackPane.margin>
@@ -90,7 +89,7 @@
       </VBox>
    </center>
    <bottom>
-      <FlowPane alignment="CENTER" BorderPane.alignment="CENTER">
+      <FlowPane fx:id="scan_btn_area" alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="start_scan_button" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#3a78e4">
                <font>
