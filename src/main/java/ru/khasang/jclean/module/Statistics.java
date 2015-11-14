@@ -4,23 +4,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Statistics {
-    public static long getTotalDublicates(HashMap<String, ArrayList<FileProperty>> hexIdentical) {
-        long i = 0;
+    public static ArrayList<StatsReport> getTotalReport(HashMap<String, ArrayList<FileProperty>> hexIdentical) {
+        long amountAll = 0;
+        long sizeAll = 0;
         for (ArrayList arrayList : hexIdentical.values()){
-            i += arrayList.size();
-        }
-        return i;
-    }
-
-    public static int getGroupTotalDublicates(HashMap<String, ArrayList<FileProperty>> hexIdentical, String type){
-        int i = 0;
-        for (ArrayList<FileProperty> arrayList : hexIdentical.values()){
-            for (FileProperty property : arrayList) {
-                if (type.equals(property.getFileType())) {
-                    i += 1;
-                }
+            amountAll += arrayList.size();
+            for (int j = 0; j < arrayList.size(); j++) {
+                FileProperty currentFile = (FileProperty) arrayList.get(j);
+                sizeAll += currentFile.getSize();
             }
         }
-        return i;
+
+        ArrayList<StatsReport> result = new ArrayList<>();
+
+        StatsReport statsAllReport = new StatsReport();
+        statsAllReport.setTypeName("all");
+        statsAllReport.setSize(sizeAll);
+        statsAllReport.setSize(sizeAll);
+
+        result.add(statsAllReport);
+
+        return result;
     }
+
 }
