@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="menu_button" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.khasang.jclean.controller.MainWindowControl">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="menu_button" stylesheets="@/css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.khasang.jclean.controller.MainWindowControl">
    <children>
-      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button_inner">
+      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button_inner">
          <effect>
             <DropShadow height="15.0" radius="7.0" width="15.0" />
          </effect>
@@ -21,13 +21,13 @@
          </effect>
          <children>
             <Pane layoutX="14.0" layoutY="15.0" prefHeight="11.0" prefWidth="17.0" styleClass="menu_button" />
-            <Label layoutX="41.0" layoutY="10.0" prefHeight="20.0" prefWidth="59.0" text="JClean" textFill="WHITE">
+            <Label layoutX="41.0" layoutY="10.0" prefHeight="17.0" prefWidth="50.0" text="JClean" textFill="WHITE">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="16.0" />
                </font>
             </Label>
          </children></Pane>
-      <Label layoutX="383.0" layoutY="577.0" styleClass="test" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#2196f3">
+      <Label layoutX="347.0" layoutY="572.0" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#2196f3">
          <font>
             <Font name="Microsoft JhengHei UI Bold" size="17.0" />
          </font></Label>
@@ -53,7 +53,7 @@
             <Font name="Microsoft JhengHei UI" size="15.0" />
          </font>
       </Label>
-      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button">
+      <Button blendMode="SRC_ATOP" layoutX="875.0" layoutY="45.0" maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="add_button">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
