@@ -86,6 +86,9 @@
                      <StackPane.margin>
                         <Insets right="47.0" top="17.0" />
                      </StackPane.margin>
+                     <effect>
+                        <DropShadow color="#00000095" height="8.0" offsetY="5.0" radius="7.75" width="25.0" />
+                     </effect>
                   </Button>
                </children>
             </StackPane>
