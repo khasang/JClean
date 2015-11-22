@@ -33,6 +33,13 @@ public class JContainer {
         }
     }
 
+    public void findAllIdenticalFiles(String folderPath) {
+        hexIdentical.clear();
+        filesOfDirectory.clear();
+        File folder = new File(folderPath);
+        findIdenticalFilesInFolder(folder);
+    }
+
     private void findIdenticalFilesInFolder(File folder) {
         File[] files = folder.listFiles();
         if (files != null) {
