@@ -33,7 +33,7 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <StackPane prefHeight="525.0" prefWidth="960.0">
                <children>
@@ -63,6 +63,20 @@
                   </HBox>
                </children>
             </StackPane>
+            <TabPane prefHeight="973.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="48.0" tabMinWidth="212.0">
+              <tabs>
+                <Tab text="Untitled Tab 1">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="Untitled Tab 2">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
          </children>
       </VBox>
    </center>
