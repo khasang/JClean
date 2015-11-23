@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="2000.0" maxWidth="2500.0" minHeight="230.0" minWidth="450.0" prefHeight="600.0" prefWidth="960.0" style="-fx-min-width: 200px; -fx-min-height: 200px; -fx-border-color: black;" styleClass="global_background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.khasang.jclean.controller.MainWindowControl">
+   <top>
+      <HBox fx:id="top_pane" onMouseEntered="#draggWindow" styleClass="background_top_menu" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefWidth="2000.0">
+               <padding>
+                  <Insets bottom="29.0" />
+               </padding>
+            </Pane>
+            <Button mnemonicParsing="false" prefHeight="26.0" styleClass="minimize_window_button">
+               <padding>
+                  <Insets right="44.0" />
+               </padding>
+            </Button>
+            <Button fx:id="closeButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#closeButtonClicked" pickOnBounds="false" prefHeight="26.0" styleClass="close_window_button" text="">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets right="44.0" />
+               </padding>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane prefHeight="525.0" prefWidth="960.0">
+               <children>
+                  <HBox maxHeight="40.0" prefHeight="40.0" prefWidth="960.0" spacing="10.0" styleClass="top_pane_color" StackPane.alignment="TOP_CENTER">
+                     <children>
+                        <Button maxHeight="70.0" maxWidth="72.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="40.0" prefWidth="40.0" styleClass="menu_button" stylesheets="@../css/style.css">
+                           <HBox.margin>
+                              <Insets bottom="3.0" left="9.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Label minWidth="50.0" prefWidth="50.0" text="JClean" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Microsoft JhengHei Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Region minWidth="250.0" prefHeight="25.0" prefWidth="770.0" />
+                     </children>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <effect>
+                        <DropShadow color="#979797" height="10.0" offsetY="5.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </HBox>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <FlowPane alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="start_scan_button" text="УДАЛИТЬ ВЫБРАННЫЕ" textFill="#3a78e4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="1.0" />
+               </FlowPane.margin></Button>
+         </children>
+      </FlowPane>
+   </bottom>
+</BorderPane>
