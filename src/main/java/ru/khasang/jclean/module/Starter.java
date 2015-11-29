@@ -49,7 +49,8 @@ public class Starter {
             try {
                 FileStore store = Files.getFileStore(rootPath);
                 System.out.println(rootPath + ": " + store.type());
-                if (store.type().equals("NTFS")) paths.add(rootPath.toString());
+                if (store.type().equals("NTFS")||
+                        store.type().equals("EXT4")) paths.add(rootPath.toString());
             } catch (IOException e) {
                 System.out.println(rootPath + ": " + "<error getting store details>");
             }
