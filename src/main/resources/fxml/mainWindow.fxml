@@ -37,7 +37,7 @@
          <children>
             <StackPane prefHeight="525.0" prefWidth="960.0">
                <children>
-                  <VBox alignment="CENTER" maxHeight="500.0" prefHeight="344.0" prefWidth="600.0" StackPane.alignment="BOTTOM_CENTER">
+                  <VBox fx:id="idVBoxBody" alignment="CENTER" maxHeight="500.0" prefHeight="344.0" prefWidth="600.0" StackPane.alignment="BOTTOM_CENTER">
                      <children>
                         <Pane minHeight="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" styleClass="logo" />
                         <Label prefHeight="59.0" prefWidth="445.0" styleClass="font" text="Сканирование всего компьютера для поиска дубликатов файлов" textAlignment="CENTER" textFill="#898989" wrapText="true">
@@ -79,9 +79,9 @@
                         <DropShadow color="#979797" height="10.0" offsetY="5.0" radius="4.5" width="10.0" />
                      </effect>
                   </HBox>
-                  <Button fx:id="plusButton" defaultButton="true" maxHeight="60.0" maxWidth="62.0" pickOnBounds="false" styleClass="add_button" StackPane.alignment="TOP_RIGHT">
+                  <Button fx:id="plusButton" defaultButton="true" onMouseClicked="#addFolderAndChangeStage" pickOnBounds="false" prefHeight="50" prefWidth="50" styleClass="add_button" StackPane.alignment="TOP_RIGHT">
                      <StackPane.margin>
-                        <Insets right="36.0" />
+                        <Insets right="36.0" top="10.0" />
                      </StackPane.margin>
                   </Button>
                </children>
@@ -92,7 +92,7 @@
    <bottom>
       <FlowPane alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="start_scan_button" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#3a78e4">
+            <Button fx:id="startScan" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startScan" styleClass="start_scan_button" text="НАЧАТЬ ПОЛНОЕ СКАНИРОВАНИЕ" textFill="#3a78e4">
                <font>
                   <Font size="14.0" />
                </font>
